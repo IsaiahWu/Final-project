@@ -12,6 +12,7 @@ class SiameseNetwork(nn.Module):
     self.relu = nn.ReLU()
     self.pool_2 = nn.MaxPool2d (kernel_size = 2, stride = 2)
     self.flatten = nn.Flatten()
+    self.fc_embedding = nn.Linear(in_features=32*7*7, out_features = 128)
 
 # How my model flow
   def forward(self, x):
@@ -23,4 +24,9 @@ class SiameseNetwork(nn.Module):
     x = self.pool_2(x)
     x = self.flatten(x)
     return x
-  
+ 
+  def forward_emddeing(self, input1, input2):
+    embedding1 = self.forward_once(input1)
+    embedding2 = self.forward_once(input2)
+    return embedding1, embedding2
+
