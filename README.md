@@ -16,11 +16,23 @@ This project uses the **ISIC 2020 Challenge Dataset**.
 - **Training Labels:** ISIC_2020_Training_GroundTruth.csv (~2MB), contains image names, diagnosis, and patient metadata  
 - **Test Images:** JPEG format (~6.7GB)  
 - **Test Labels:** ISIC_2020_Test_Metadata.csv (~458KB)
-- 
+
 > **Note:** Please do **not** download the DICOM files as they require special software to process and don't need for this project
 
 ### Dataset Access
 The dataset is available here: [ISIC 2020 Challenge Dataset](https://challenge2020.isic-archive.com/)
+
+## Data Transformation
+
+This project applies two types of data transformations to the images:
+
+- **Preprocessing**:  
+  Images are resized to a fixed size (e.g., 128x128 pixels) and normalized to standardize pixel values for consistent input to the network.
+
+- **Augmentation**:  
+  To balance the dataset additional random augmentations such as horizontal flips, rotations, and color change are applied only to melanoma images that are oversampled.
+
+
 
 ## Model
 
