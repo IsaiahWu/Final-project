@@ -164,7 +164,6 @@ For each epoch:
   - Log batch loss intermittently.
 - Compute and print average loss at the end of each epoch.
 
-- 
-
+![Training_loss_validation](graph/Train_average_loss.png)
 
 
