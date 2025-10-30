@@ -140,7 +140,7 @@ Convert 3 dimensional features map to 1 dimensional vector
 
 **5. Constrastive Loss**
 
-A Custom loss function that computes Euclidean distance between the paired embeddings. The goal is to make the distance between similar pairs lower than the predefined margin, and push the different pairs further apart. 
+  A Custom loss function that computes Euclidean distance between the paired embeddings. The goal is to make the distance between similar pairs lower than the predefined margin, and push the different pairs further apart. 
 
 ## Train Process
 
@@ -164,6 +164,41 @@ For each epoch:
   - Log batch loss intermittently.
 - Compute and print average loss at the end of each epoch.
 
-![Training_loss_validation](graph/Train_average_loss.png)
+![Training_average_loss](graph/Train_average_loss.png)
+
+
+## Results and Analysis
+
+### Confusion Matrix
+
+*Figure 1: Confusion Matrix of Siamese Network*
+
+![Confusion Matrix](graph/Confusion_matrix.png)
+
+---
+
+#### Analysis
+
+**Normal (Benign) Lesions:**  
+- Correctly identified: 6,441 images (98.96%)  
+- Misidentified: 68 images (1.04%)  
+
+**Melanoma:**  
+- Correctly identified: 115 images (98.29%)  
+- Misidentified: 2 images (1.71%)  
+
+---
+
+**Overall Accuracy:**  
+  Overall, across both models it both shows around 98% accuracy on identifying images. Which is well above my initial 80% accuracy target. This suggests that my model is pretty well trained
+
+**Clinical Priority:**  
+  However it is better to be false positive rather than false negative because you would rather know you might be sick and be aware, rather than not know anything and suddenly die. In my model the error is acceptable, because a false positive can trigger review by a human expert rather than allowing a dangerous miss.
+
+---
+
+
+
+
 
 
