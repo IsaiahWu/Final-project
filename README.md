@@ -6,6 +6,21 @@ Siamese network is a neural network that is currently widely used in facial reco
 
 This project will be implementing a siamese network aiming to differentiate between benign skin and melanoma skin cancer through learning “The ISIC 2020 Challenge Dataset”. The goal is to achieve an 80% accuracy by classifying skin images either being benign or melanoma.
 
+## Dataset
+
+This project uses the **ISIC 2020 Challenge Dataset**.
+
+### Files to Download
+
+- **Training Images:** JPEG format (~23GB)  
+- **Training Labels:** ISIC_2020_Training_GroundTruth.csv (~2MB), contains image names, diagnosis, and patient metadata  
+- **Test Images:** JPEG format (~6.7GB)  
+- **Test Labels:** ISIC_2020_Test_Metadata.csv (~458KB)
+- 
+> **Note:** Please do **not** download the DICOM files as they require special software to process and don't need for this project
+
+### Dataset Access
+The dataset is available here: [ISIC 2020 Challenge Dataset](https://challenge2020.isic-archive.com/)
 
 ## Model
 
