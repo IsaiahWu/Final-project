@@ -30,7 +30,20 @@ This project applies two types of data transformations to the images:
   Images are resized to a fixed size (e.g., 128x128 pixels) and normalized to standardize pixel values for consistent input to the network.
 
 - **Augmentation**:  
-  To balance the dataset additional random augmentations such as horizontal flips, rotations, and color change are applied only to melanoma images that are oversampled.
+  The ISIC 2020 Challenge Dataset contains 33,126 dermoscopic images, with a significant class imbalance. Approximately 26,033 benign images and only 467 melanoma images indicate a ratio of about 1 to 56. This extremely high imbalance will cause overfitting to the majority class, making it difficult to identify the minority class melanoma. To address this issue, data augmentation is needed to apply to the minority classes melanoma images. These augmentation will preserve the essential features of the image and but change the weights create new augmented images. 
+
+## Data Directory Configuration
+After downloading the entire dataset to your local machine, follow these steps:
+
+- If you are running the project on your local machine, you can skip the upload step
+- If running on a cloud server like [Vast.ai](http://vast.ai), upload the dataset files to your cloud drive
+
+Next, create a configuration file (e.g., `config.py`) to specify the directory paths for your dataset files like this:
+```
+train_image = 'path/to/train/images'
+train_labels = 'path/to/train/labels'
+```
+Make sure to update these paths according to where the data is stored on your server
 
 
 ### Environment Setup and GPU Requirements
@@ -74,19 +87,6 @@ pip install pandas pillow numpy matplotlib scikit-learn
 - Scikit-learn version: 1.7.2  
 
 
-## Model
 
-## How it works
 
-## Dependencies
-
-## How to installation
-
-## Lost function
-
-## Prediction 
-
-## Result
-
-## Future improvement
 
