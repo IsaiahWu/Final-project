@@ -22,7 +22,7 @@ This project uses the **ISIC 2020 Challenge Dataset**.
 ### Dataset Access
 The dataset is available here: [ISIC 2020 Challenge Dataset](https://challenge2020.isic-archive.com/)
 
-## Data Transformation
+### Data Transformation
 
 This project applies two types of data transformations to the images:
 
@@ -32,6 +32,46 @@ This project applies two types of data transformations to the images:
 - **Augmentation**:  
   To balance the dataset additional random augmentations such as horizontal flips, rotations, and color change are applied only to melanoma images that are oversampled.
 
+
+### Environment Setup and GPU Requirements
+
+This project was developed and tested using a Vast.ai GPU server with an NVIDIA RTX 5090 (CUDA 13.0) and PyTorch running with CUDA 12.9.1+.
+
+#### Minimum System Requirements
+- **GPU:** NVIDIA GPU with CUDA capability (version 11.8 or higher recommended)  
+- **CUDA Toolkit:** Version 11.8 or newer  
+- **RAM:** At least 32GB (recommended for handling large image datasets)  
+- **Storage:** Minimum 30GB free disk space for ISIC dataset and outputs  
+- **Python:** Version 3.8+  
+- **Frameworks:** PyTorch 2.1+, torchvision 0.16+, along with other compatible packages  
+
+---
+
+### PyTorch Installation
+
+On [Vast.ai](http://vast.ai), PyTorch is pre-installed already in the environment 
+
+If you are using a local machine or another server without PyTorch pre-installed, please follow the official installation guide:  
+[PyTorch Installation Guide](https://pytorch.org/get-started/locally/)
+
+---
+
+### Package Installation
+
+Install essential Python packages with pip:
+```
+pip install pandas pillow numpy matplotlib scikit-learn
+```
+
+### Package Versions Used
+
+- PyTorch version: 2.8.0+cu128  
+- Torchvision version: 0.23.0+cu128  
+- Pandas version: 2.3.3  
+- Pillow version: 11.0.0  
+- NumPy version: 2.1.2  
+- Matplotlib version: 3.10.7  
+- Scikit-learn version: 1.7.2  
 
 
 ## Model
