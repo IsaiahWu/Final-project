@@ -88,17 +88,23 @@ pip install pandas pillow numpy matplotlib scikit-learn
 
 
 ### Dataset Module
+
 Create a directory for data. This data will handle all the loading and preparing data to be passed in the model. 
 
 ## Dataset module structure 
+
 **1. Loading Dataset:**
   Create a constructor class (`__init__`).  This class is responsible for preparing all the dataset whenever it is requested. Specifying the directory and setting up transformation and augmentation
+  
 **2. Create labels:**
   Convert all the diagnosis classes in “ISIC_2020_Training_GroundTruth.csv” into binary labels melanoma being 1 and benign is 0. Since neutral network can only process numerical inputs 
+  
 **3. Image pairing:**
   Since the train images are in a folder. The function `os.listdir ` is being used to read all the images file names. Then images will be paired according to their class. This allows the network to learn the key features, similarities and differences between melanoma and benign images.
+  
 **4. Dataset balancing / Augmentation:**
   To address the class imbalance. We set up a framework for augmenting the minority class melanoma. At this stage we are just computing how much augmentation images are needed to balance the dataset through the oversampling factor. Which can we calculate through the ratio of benign and melanoma images. Furthermore, we will also be tracking how much augmented images are being produced making sure it does not exceed the required amount of balancing
+  
 **5. Data Access:**
   Here we are preparing the data to be compared. By defending a class  `__getitem__`. First the first image is chosen based on the given index. Then, the network will decide whether the pair should be the same class or different class.  Last, second image will be chosen randomly from the dataset including the augmented one corresponding the given pair type 
 
