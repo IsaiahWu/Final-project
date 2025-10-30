@@ -87,28 +87,74 @@ pip install pandas pillow numpy matplotlib scikit-learn
 - Scikit-learn version: 1.7.2  
 
 
-### Dataset Module
+## Dataset Module
 
 Create a directory for data. This data will handle all the loading and preparing data to be passed in the model. 
 
-## Dataset module structure 
+### Dataset module structure
 
-**1. Loading Dataset:**
+**1. Loading Dataset**
   Create a constructor class (`__init__`).  This class is responsible for preparing all the dataset whenever it is requested. Specifying the directory and setting up transformation and augmentation
   
-**2. Create labels:**
+**2. Create labels**
   Convert all the diagnosis classes in “ISIC_2020_Training_GroundTruth.csv” into binary labels melanoma being 1 and benign is 0. Since neutral network can only process numerical inputs 
   
-**3. Image pairing:**
+**3. Image pairing**
   Since the train images are in a folder. The function `os.listdir ` is being used to read all the images file names. Then images will be paired according to their class. This allows the network to learn the key features, similarities and differences between melanoma and benign images.
   
-**4. Dataset balancing / Augmentation:**
+**4. Dataset balancing / Augmentation**
   To address the class imbalance. We set up a framework for augmenting the minority class melanoma. At this stage we are just computing how much augmentation images are needed to balance the dataset through the oversampling factor. Which can we calculate through the ratio of benign and melanoma images. Furthermore, we will also be tracking how much augmented images are being produced making sure it does not exceed the required amount of balancing
   
-**5. Data Access:**
+**5. Data Access**
   Here we are preparing the data to be compared. By defending a class  `__getitem__`. First the first image is chosen based on the given index. Then, the network will decide whether the pair should be the same class or different class.  Last, second image will be chosen randomly from the dataset including the augmented one corresponding the given pair type 
 
+## Model Modulue
 
+Create a directory for the siamese model . This part we are setting up convolution layers and contrastive loss
+
+**1. Convolution layer**
+conv1: 3 input channels, 16 output channels, 3x3 kernel
+conv2: 16 input channels, 32 output channels, 3x3 kernel
+conv3: 32 input channels, 64 output channels, 3x3 kernel
+
+**2. Maxpooling and ReLu**
+
+`ReLu` to sets all negative values in the feature map to 0
+`2x2 max pooling` is used to keep most significant features in the kernel
+**3. Flatten**
+
+Convert 3 dimensional features map to 1 dimensional vector
+
+**4. Fully connected layers**
+
+`fc1`: Linear mapping all the vectors to 512 neurons 
+`fc_emedding`: The final fully connected layers which produce the final output embeddings
+
+**5. Constrastive Loss**
+
+A Custom loss function that computes Euclidean distance between the paired embeddings. The goal is to make the distance between similar pairs lower than the predefined margin, and push the different pairs further apart. 
+
+## Train Process
+
+Implemented in [train.py](train.py). This section trains the Siamese Network model using PyTorch.
+
+### Hyperparameters
+- **Batch size:** 256 (optimized for RTX 5090)
+- **Learning rate:** 1e-4
+- **Number of epochs:** 12
+- **Margin for contrastive loss:** 0.5
+- **Embedding dimension:** 128
+
+### Training Loop
+For each epoch:
+- Iterate over batches:
+  - Move images and labels to the selected device (GPU or CPU).
+  - Zero the optimizer's gradients.
+  - Forward pass the image pairs through the model to obtain embeddings.
+  - Calculate loss using the contrastive loss criterion.
+  - Perform backpropagation and update model weights.
+  - Log batch loss intermittently.
+- Compute and print average loss at the end of each epoch.
 
 
 
