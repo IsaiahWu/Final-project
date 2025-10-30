@@ -120,7 +120,9 @@ Create a directory for the siamese model . This part we are setting up convoluti
 **1. Convolution layer**
 
 conv1: 3 input channels, 16 output channels, 3x3 kernel
+
 conv2: 16 input channels, 32 output channels, 3x3 kernel
+
 conv3: 32 input channels, 64 output channels, 3x3 kernel
 
 **2. Maxpooling and ReLu**
@@ -161,6 +163,8 @@ For each epoch:
   - Perform backpropagation and update model weights.
   - Log batch loss intermittently.
 - Compute and print average loss at the end of each epoch.
+
+- 
 
 
 
