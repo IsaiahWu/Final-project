@@ -148,6 +148,7 @@ Convert 3 dimensional features map to 1 dimensional vector
 Implemented in [train.py](train.py). This section trains the Siamese Network model using PyTorch.
 
 ### Hyperparameters
+
 - **Batch size:** 256 (optimized for RTX 5090)
 - **Learning rate:** 1e-4
 - **Number of epochs:** 12
@@ -155,6 +156,7 @@ Implemented in [train.py](train.py). This section trains the Siamese Network mod
 - **Embedding dimension:** 128
 
 ### Training Loop
+
 For each epoch:
 - Iterate over batches:
   - Move images and labels to the selected device (GPU or CPU).
@@ -167,6 +169,37 @@ For each epoch:
 
 ![Training_average_loss](graph/Train_average_loss.png)
 
+
+## Prediction and Analysis
+
+###1. Accuracy score
+
+- The overall correctness of the predicting which class this image it is
+- Can be misleading with imbalance datasets
+- Goal to reach a 80% accuracy
+
+###2. f1-score
+
+- The harmonic mean of precision and recall
+- Balances the trade-off between catching positive cases and having few false alarms
+
+###4. Spcificity 
+
+- Proportion of actual negatives correctly identified by the model
+
+###3. Confusion Matrix
+
+- Visulaize how many samples were correctly and incorrectly classified as each class
+- Shows true positives, false positives, true negatives, and false negatives
+
+###5. ROC/AUC curve 
+
+- Plots the trade-off between true positive rate (sensitivity) and false positive rate at all thresholds
+- AUC ((Area Under ROC Curve) it summarize the ability of the model to distinguish classes
+  
+###5. T-SNE graph
+
+- Shows how well the model learn features separate classes distinct clusters indicate strong separation
 
 ## Results and Analysis
 
@@ -253,12 +286,45 @@ For each epoch:
 - Predicted Normal: 6556
 
 ### Summary
-This model shows high overall accuracy mainly due to the class imbalance. However, the low precision, recall, and F1 score indicate it performs poorly at detecting melanoma cases, with many missed or misclassified instances. Imporvements are needed to on classifying melanoma cases.
+This model shows high overall accuracy mainly due to the class imbalance. However, the model produce a very low precision, recall, and F1 score which indicate it performs poorly at detecting melanoma cases, with many missed or misclassified instances. Imporvements are needed to on classifying melanoma cases.
 
 
 ## Future improvements:
 
+- Address class imbalance, expand the augmentation more diverse, increase more combinations, and create more realistic melanoma images.
 
+- Increase melanoma pairs more aggressively, even if false positives occur more frequently, it's better then false negative. Because false negatives are clinically more dangerous.
+
+- Apply class weighting or focal loss in training to change misclassification of melanoma more heavily.
+
+- Use a pretrained CNN backbone (like ResNet or EfficientNet) in the Siamese network to extract richer features from images.
+
+- Focus training on challenging pairs that are visually similar to improve embedding discrimination.
+
+---
+
+## Reference:
+
+[1] S. Benhur, “A Friendly Introduction to Siamese Networks | Built In,” builtin.com, Jan. 25, 2022.
+
+[2] “The ISIC 2020 Challenge Dataset,” ISIC 2020 Challenge Dataset. 
+
+[3] PyTorch, “PyTorch,” Pytorch.org, 2023. 
+
+[4] “Rent GPUs | Vast.ai,” Vast AI. 
+
+[5] GeeksforGeeks, “Understanding the Confusion Matrix in Machine Learning,” GeeksforGeeks, Oct. 15, 2017. 
+
+[6] Kemal Erdem (burnpiro, “t-SNE clearly explained - TDS Archive - Medium,” Medium, Apr. 13, 2020. 
+
+[7] R. Kundu, “F1 Score in Machine Learning: Intro & Calculation,” V7, Dec. 16, 2022. 
+
+[8] shakes76, “Topic recognition - s48008361 Siamese Submission by TheNoZER0 · Pull Request #16 · shakes76/PatternAnalysis-2024,” GitHub, Nov. 19, 2024.
+‌
+‌
+‌
+‌
+‌
 
 
 
