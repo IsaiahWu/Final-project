@@ -176,7 +176,6 @@ For each epoch:
 
 ![Confusion Matrix](graph/Confusion_matrix.png)
 
----
 
 #### Analysis
 
@@ -188,8 +187,6 @@ For each epoch:
 - Correctly identified: 115 images (98.29%)  
 - Misidentified: 2 images (1.71%)  
 
----
-
 **Overall Accuracy:**  
   Overall, across both models it both shows around 98% accuracy on identifying images. Which is well above my initial 80% accuracy target. This suggests that my model is pretty well trained
 
@@ -197,6 +194,18 @@ For each epoch:
   However it is better to be false positive rather than false negative because you would rather know you might be sick and be aware, rather than not know anything and suddenly die. In my model the error is acceptable, because a false positive can trigger review by a human expert rather than allowing a dangerous miss.
 
 ---
+*Figure 2: Receiver Operating Characteristic Curve of Siamese Network*
+
+### ROC curve
+![ROC_curve](graph/ROC_curve.png)
+
+
+#### Analysis
+- AUC Score: 0.675
+- My model shows the ROC curve stays above random line most of the thresholds, indicaiting that it perform bettter then random guess however it is not perfect yet
+- AUC captures more true positive near the end of the curve 
+- A factor limiting the AUC score is the class imbalance of the test data, my model can lean more toward predicting the majority class, reducing its scoring ability
+## Future improvements:
 
 
 
