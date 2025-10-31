@@ -73,7 +73,7 @@ If you are using a local machine or another server without PyTorch pre-installed
 
 Install essential Python packages with pip:
 ```
-pip install pandas pillow numpy matplotlib scikit-learn
+pip install pandas pillow numpy matplotlib scikit-learn seaborn
 ```
 
 ### Package Versions Used
@@ -84,7 +84,8 @@ pip install pandas pillow numpy matplotlib scikit-learn
 - Pillow version: 11.0.0  
 - NumPy version: 2.1.2  
 - Matplotlib version: 3.10.7  
-- Scikit-learn version: 1.7.2  
+- Scikit-learn version: 1.7.2
+- Seaborn version: 0.13.2
 
 
 ## Dataset Module
