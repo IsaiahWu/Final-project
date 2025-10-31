@@ -184,27 +184,78 @@ For each epoch:
 - Misidentified: 68 images (1.04%)  
 
 **Melanoma:**  
-- Correctly identified: 115 images (98.29%)  
-- Misidentified: 2 images (1.71%)  
+- Correctly identified: 2 images (1.71%)  
+- Misidentified: 115 images (98.29%)  
 
 **Overall Accuracy:**  
-  Overall, across both models it both shows around 98% accuracy on identifying images. Which is well above my initial 80% accuracy target. This suggests that my model is pretty well trained
+- Overall accuracy appear high due to 97.2% due to normal class dominating the data
+- But Melenoma miss 98% of the class
 
 **Clinical Priority:**  
-  However it is better to be false positive rather than false negative because you would rather know you might be sick and be aware, rather than not know anything and suddenly die. In my model the error is acceptable, because a false positive can trigger review by a human expert rather than allowing a dangerous miss.
+- However it is better to be false positive rather than false negative because you would rather know you might be sick and be aware, rather than not know anything and suddenly die. In my model the error is acceptable, because a false positive can trigger review by a human expert rather than allowing a dangerous miss.
+- My model currently produces mostly false negatives for melanoma, which is NOT acceptable in a real clinical setting because it would mean most dangerous cases are missed
+  
 
 ---
-*Figure 2: Receiver Operating Characteristic Curve of Siamese Network*
 
 ### ROC curve
-![ROC_curve](graph/ROC_curve.png)
 
+*Figure 2: Receiver Operating Characteristic Curve of Siamese Network*
+
+![ROC_curve](graph/ROC_curve.png)
 
 #### Analysis
 - AUC Score: 0.675
 - My model shows the ROC curve stays above random line most of the thresholds, indicaiting that it perform bettter then random guess however it is not perfect yet
 - AUC captures more true positive near the end of the curve 
 - A factor limiting the AUC score is the class imbalance of the test data, my model can lean more toward predicting the majority class, reducing its scoring ability
+
+---
+
+### t-SNE Visualization of Emeddings 
+
+*Figure 3:  t-SNE plot of embeddings from Siamese Network
+
+![T-SNE](graph/t_SNE.png)
+
+
+#### Analysis
+- A very scatter cluster of benign and malignant classes
+- Some overlap and mixing which suggests either both classes share common features or model is uncertain
+- The overall structure doesnt suggest my model learn in a efficent way
+
+---
+
+## Model Validation Results
+
+### Final Validation Accuracy
+- Accuracy: 97.24%
+- Correct Predictions: 6443 / 6626
+
+### Confusion Matrix
+|                      | Predicted Melanoma | Predicted Normal |
+|----------------------|--------------------|------------------|
+| **Actual Melanoma**   | 2 (True Positive)   | 115 (False Negative) |
+| **Actual Normal**     | 68 (False Positive) | 6441 (True Negative) |
+
+### Metrics
+- Precision (Melanoma): 0.0286
+- Recall (Sensitivity): 0.0171
+- Specificity: 0.9896
+- F1 Score: 0.0214
+
+### Class Distribution
+- Actual Melanoma Cases: 117
+- Actual Normal Cases: 6509
+
+### Predictions
+- Predicted Melanoma: 70
+- Predicted Normal: 6556
+
+### Summary
+This model shows high overall accuracy mainly due to the class imbalance. However, the low precision, recall, and F1 score indicate it performs poorly at detecting melanoma cases, with many missed or misclassified instances. Imporvements are needed to on classifying melanoma cases.
+
+
 ## Future improvements:
 
 
