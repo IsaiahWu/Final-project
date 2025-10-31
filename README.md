@@ -319,7 +319,12 @@ This model shows high overall accuracy mainly due to the class imbalance. Howeve
 [7] R. Kundu, “F1 Score in Machine Learning: Intro & Calculation,” V7, Dec. 16, 2022. 
 
 [8] shakes76, “Topic recognition - s48008361 Siamese Submission by TheNoZER0 · Pull Request #16 · shakes76/PatternAnalysis-2024,” GitHub, Nov. 19, 2024.
-‌
+
+[9] A. A. Awan, “A Complete Guide to Data Augmentation,” DataCamp, Nov. 2022.
+
+[10] J. Brownlee, “SMOTE for Imbalanced Classification with Python,” Machine Learning Mastery, Jan. 16, 2020.
+
+[11] Sole, “Exploring Oversampling Techniques for Imbalanced Datasets,” Train in Data Blog, Mar. 20, 2023.
 ‌
 ‌
 ‌
